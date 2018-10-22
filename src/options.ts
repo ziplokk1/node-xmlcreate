@@ -40,6 +40,10 @@ export interface IStringOptions {
      * enabled.
      */
     pretty?: boolean;
+    /**
+     * Escape right angle bracket (>) when contained in strings.
+     */
+    escapeRightAngleBracket?: boolean;
 }
 
 /**
@@ -53,6 +57,7 @@ export class StringOptions implements IStringOptions {
     public indent: string = "    ";
     public newline: string = "\n";
     public pretty: boolean = true;
+    public escapeRightAngleBracket: boolean = false;
 
     constructor(options: IStringOptions = {}) {
         if (!isUndefined(options.doubleQuotes)) {
@@ -66,6 +71,9 @@ export class StringOptions implements IStringOptions {
         }
         if (!isUndefined(options.pretty)) {
             this.pretty = options.pretty;
+        }
+        if (!isUndefined(options.escapeRightAngleBracket)) {
+            this.escapeRightAngleBracket = options.escapeRightAngleBracket;
         }
     }
 }

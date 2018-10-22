@@ -20,6 +20,7 @@ import {
     escapeDoubleQuotes,
     escapeLeftAngleBrackets,
     escapeRightAngleBracketsInCdataTerminator,
+    escapeRightAngleBracketsInString,
     escapeSingleQuotes
 } from "../../lib/escape";
 
@@ -73,5 +74,12 @@ describe("escape", () => {
         assert.strictEqual(escapeDoubleQuotes("\"abc"), "&quot;abc");
         assert.strictEqual(escapeDoubleQuotes("\"a\"bc\""),
                            "&quot;a&quot;bc&quot;");
+    });
+
+    it("#escapeRightAngleBrackets", () => {
+        assert.strictEqual(escapeRightAngleBracketsInString(">"), "&gt;");
+        // Escape right angle bracket before cdata end.
+        assert.strictEqual(escapeRightAngleBracketsInString(">]]>"),
+            "&gt;]]&gt;");
     });
 });

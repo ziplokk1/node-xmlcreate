@@ -22,6 +22,7 @@ describe("options", () => {
         it("normal options", () => {
             const options = {
                 doubleQuotes: false,
+                escapeRightAngleBracket: false,
                 indent: "    ",
                 newline: "\n",
                 pretty: true
@@ -32,6 +33,7 @@ describe("options", () => {
         it("custom options", () => {
             const options = {
                 doubleQuotes: true,
+                escapeRightAngleBracket: true,
                 indent: "\t",
                 newline: "\r\n",
                 pretty: false
@@ -43,6 +45,7 @@ describe("options", () => {
             const options = {};
             assert.deepEqual(new StringOptions(options), {
                 doubleQuotes: false,
+                escapeRightAngleBracket: false,
                 indent: "    ",
                 newline: "\n",
                 pretty: true

@@ -14,6 +14,9 @@
     "name": "Michael Kourlas",
     "email": "michael@kourlas.net"
   },
+  "scripts": {
+    "test": "node_modules/.bin/gulp test-dev"
+  },
   "files": [
     "lib",
     "CHANGES.md",

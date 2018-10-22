@@ -17,7 +17,8 @@
 import {
     escapeAmpersands,
     escapeLeftAngleBrackets,
-    escapeRightAngleBracketsInCdataTerminator
+    escapeRightAngleBracketsInCdataTerminator,
+    escapeRightAngleBracketsInString
 } from "../escape";
 import {validateChar} from "../validate";
 
@@ -29,6 +30,11 @@ export interface IXmlCharDataOptions {
      * The character data.
      */
     charData: string;
+    /**
+     * Escape right angle brackets (>) in the text between
+     * two tags.
+     */
+    escapeRightAngleBracket?: boolean;
 }
 
 /**
@@ -41,6 +47,7 @@ export interface IXmlCharDataOptions {
 export default class XmlCharData<Parent> {
     private readonly _charData: string;
     private readonly _parent: Parent;
+    private readonly _escapeRightAngleBracket: boolean;
 
     constructor(parent: Parent, validation: boolean,
                 options: IXmlCharDataOptions)
@@ -51,6 +58,8 @@ export default class XmlCharData<Parent> {
         }
         this._charData = options.charData;
         this._parent = parent;
+        this._escapeRightAngleBracket =
+            options.escapeRightAngleBracket || false;
     }
 
     /**
@@ -60,6 +69,9 @@ export default class XmlCharData<Parent> {
         let str = this._charData;
         str = escapeAmpersands(str);
         str = escapeLeftAngleBrackets(str);
+        if (this._escapeRightAngleBracket) {
+            str = escapeRightAngleBracketsInString(str);
+        }
         str = escapeRightAngleBracketsInCdataTerminator(str);
         return str;
     }

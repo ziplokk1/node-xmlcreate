@@ -45,6 +45,16 @@ describe("XmlCharData", () => {
                     charData: "abc" + String.fromCharCode(0x0001) + "def"
                 }));
         });
+
+        it("character data escapes 'greater than' symbol when option is supplied", () => { // tslint:disable-line
+            assert.strictEqual(
+                new XmlCharData(undefined, true, {
+                    charData: "<&a&b<c&<>]]>",
+                    escapeRightAngleBracket: true
+                }).toString(),
+                "&lt;&amp;a&amp;b&lt;c&amp;&lt;&gt;]]&gt;"
+            );
+        });
     });
 
     it("#up", () => {
