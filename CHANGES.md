@@ -1,3 +1,7 @@
+## 2.1.0 ##
+
+* Add support to escape the '>' symbol from strings within tags.
+
 ## 2.0.0 ##
 
 * API rewrite
