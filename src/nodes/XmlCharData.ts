@@ -16,6 +16,7 @@
 import {
     escapeAmpersands,
     escapeLeftAngleBrackets,
+    escapeRightAngleBracket,
     escapeRightAngleBracketsInCdataTerminator
 } from "../escape";
 import {IStringOptions} from "../options";
@@ -131,6 +132,9 @@ export default class XmlCharData extends XmlNode {
         let str = this.charData;
         str = escapeAmpersands(str);
         str = escapeLeftAngleBrackets(str);
+        if (options.escapeRightAngleBracket) {
+            str = escapeRightAngleBracket(str);
+        }
         str = escapeRightAngleBracketsInCdataTerminator(str);
         return str;
     }

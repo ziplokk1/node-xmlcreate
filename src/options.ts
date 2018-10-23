@@ -41,6 +41,10 @@ export interface IStringOptions {
      * is enabled.
      */
     pretty?: boolean;
+    /**
+     * Escape right angle bracket in text.
+     */
+    escapeRightAngleBracket?: boolean;
 }
 
 /**
@@ -54,6 +58,7 @@ export class StringOptions implements IStringOptions {
     public indent: string = "    ";
     public newline: string = "\n";
     public pretty: boolean = true;
+    public escapeRightAngleBracket: boolean = false;
 
     constructor(stringOptions: IStringOptions = {}) {
         if (!isObject(stringOptions)) {
@@ -94,6 +99,16 @@ export class StringOptions implements IStringOptions {
             }
         } else {
             this.pretty = stringOptions.pretty;
+        }
+
+        if (!isBoolean(stringOptions.escapeRightAngleBracket)) {
+            if (!isUndefined(stringOptions.escapeRightAngleBracket)) {
+                throw new TypeError("options.escapeRightAngleBracket " +
+                    "should be a boolean or undefined");
+            }
+        } else {
+            this.escapeRightAngleBracket =
+                stringOptions.escapeRightAngleBracket;
         }
     }
 }

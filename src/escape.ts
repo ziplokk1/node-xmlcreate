@@ -81,3 +81,13 @@ export function escapeSingleQuotes(str: string): string {
 export function escapeDoubleQuotes(str: string): string {
     return str.replace(/"/g, "&quot;");
 }
+
+/**
+ * Replaces right angle brackets (>) with the appropriate XML
+ * character reference.
+ *
+ * @param str The string to escape.
+ */
+export function escapeRightAngleBracket(str: string): string {
+    return str.replace(/>/g, "&gt;");
+}

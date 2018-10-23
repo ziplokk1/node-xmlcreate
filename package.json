@@ -1,5 +1,5 @@
 {
-  "name": "xmlcreate",
+  "name": "xmlcreate3",
   "version": "1.0.1",
   "description": "Simple XML builder for Node.js",
   "keywords": [
@@ -26,7 +26,7 @@
   "typings": "./lib/main",
   "repository": {
     "type": "git",
-    "url": "git://github.com/michaelkourlas/node-xmlcreate.git"
+    "url": "git://github.com/ziplokk1/node-xmlcreate.git"
   },
   "devDependencies": {
     "@types/chai": "^3.4.35",
@@ -44,5 +44,11 @@
     "tslint": "^4.4.2",
     "typedoc": "^0.5.7",
     "typescript": "^2.1.6"
-  }
+  },
+  "contributors": [
+    {
+      "name": "Mark Sanders",
+      "email": "ziplokk.mark.sanders@gmail.com"
+    }
+  ]
 }

@@ -18,6 +18,7 @@ import {
     escapeAmpersands,
     escapeDoubleQuotes,
     escapeLeftAngleBrackets,
+    escapeRightAngleBracket,
     escapeRightAngleBracketsInCdataTerminator,
     escapeSingleQuotes
 } from "../../lib/escape";
@@ -41,6 +42,12 @@ describe("escape", () => {
             assert.strictEqual(escapeLeftAngleBrackets("<abc"), "&lt;abc");
             assert.strictEqual(escapeLeftAngleBrackets("<a<bc<"),
                                "&lt;a&lt;bc&lt;");
+        });
+    });
+
+    describe("#escapeRightAngleBrackets", () => {
+        it("should escape all right angle brackets in a string", () => {
+            assert.strictEqual(escapeRightAngleBracket(">"), "&gt;");
         });
     });
 

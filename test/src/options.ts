@@ -75,6 +75,7 @@ describe("options", () => {
            " specified and valid", () => {
             let options = {
                 doubleQuotes: false,
+                escapeRightAngleBracket: true,
                 indent: "    ",
                 newline: "\n",
                 pretty: true
@@ -83,6 +84,7 @@ describe("options", () => {
 
             options = {
                 doubleQuotes: true,
+                escapeRightAngleBracket: false,
                 indent: "\t",
                 newline: "\r\n",
                 pretty: false
@@ -111,6 +113,11 @@ describe("options", () => {
                 pretty: null
             };
             assert.throws(() => new StringOptions(options));
+
+            options = {
+                escapeRightAngleBracket: null
+            };
+            assert.throws(() => new StringOptions(options));
         });
 
         it("should return a validated version of the specified options with" +
@@ -119,6 +126,7 @@ describe("options", () => {
             const options = {};
             assert.deepEqual(new StringOptions(options), {
                 doubleQuotes: false,
+                escapeRightAngleBracket: false,
                 indent: "    ",
                 newline: "\n",
                 pretty: true
